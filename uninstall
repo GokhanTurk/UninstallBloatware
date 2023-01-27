@@ -1,0 +1,38 @@
+@echo off
+chcp 65001
+color b
+cls
+net session > nul 2>&1
+if %errorlevel% == 2 (goto :EXIT) else (goto START:)
+:START
+winget > nul 2>&1
+if not %errorlevel% == 0 (goto :WingetInstall) else (goto :uninstall)
+:uninstall
+winget install rarlab.winrar -h --accept-source-agreements --accept-package-agreements
+winget uninstall Microsoft.SkypeApp_kzf8qxf38zg5c -h
+winget uninstall Microsoft.XboxApp_8wekyb3d8bbwe -h
+winget uninstall Microsoft.MicrosoftSolitaireCollection_8wekyb3d8bbwe -h
+winget uninstall Microsoft.MixedReality.Portal_8wekyb3d8bbwe -h
+winget uninstall Microsoft.SkypeApp_kzf8qxf38zg5c -h
+winget uninstall SpotifyAB.SpotifyMusic_zpdnekdrzrea0 -h
+winget uninstall Microsoft.XboxGamingOverlay_8wekyb3d8bbwe -h
+winget uninstall Microsoft.YourPhone_8wekyb3d8bbwe -h
+winget uninstall Microsoft.549981C3F5F10_8wekyb3d8bbwe -h
+winget uninstall Microsoft.XboxGameOverlay_8wekyb3d8bbwe -h
+winget uninstall Microsoft.Xbox.TCUI_8wekyb3d8bbwe -h
+winget uninstall Microsoft.BingFinance_8wekyb3d8bbwe -h
+winget uninstall Microsoft.BingSports_8wekyb3d8bbwe -h
+winget uninstall Microsoft.People_8wekyb3d8bbwe -h
+winget uninstall Disney.37853FC22B2CE_6rarf9sa4v8jt -h
+pause
+exit
+:EXIT
+echo -                                 -
+echo  You must run it as administrator!
+echo -                                 -
+ping 127.0.0.1 > nul
+exit
+:WingetInstall
+Echo winget kuruluyor...
+powershell -ExecutionPolicy ByPass -Command "$ScriptFromGitHub=Invoke-WebRequest "https://raw.githubusercontent.com/GokhanTurk/FormatSonrasi.bat/main/SilentWinget.ps1" -UseBasicParsing;Invoke-Expression $($ScriptFromGitHub.Content)" & REM winget kurulumu yapan ps scripti çalıştırır.
+goto :uninstall
