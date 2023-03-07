@@ -22,6 +22,10 @@ winget uninstall Microsoft.BingFinance_8wekyb3d8bbwe -h
 winget uninstall Microsoft.BingSports_8wekyb3d8bbwe -h
 winget uninstall Microsoft.People_8wekyb3d8bbwe -h
 winget uninstall Disney.37853FC22B2CE_6rarf9sa4v8jt -h
+winget uninstall Microsoft.GetHelp_8wekyb3d8bbwe -h
+winget uninstall Microsoft.Getstarted_8wekyb3d8bbwe -h
+winget uninstall Microsoft.Wallet_8wekyb3d8bbwe -h
+winget uninstall Microsoft.Office.OneNote_8wekyb3d8bbwe -h
 
 Pause
 Exit
