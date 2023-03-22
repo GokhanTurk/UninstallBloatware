@@ -26,6 +26,7 @@ winget uninstall Microsoft.GetHelp_8wekyb3d8bbwe -h
 winget uninstall Microsoft.Getstarted_8wekyb3d8bbwe -h
 winget uninstall Microsoft.Wallet_8wekyb3d8bbwe -h
 winget uninstall Microsoft.Office.OneNote_8wekyb3d8bbwe -h
-
+winget uninstall Microsoft.WindowsFeedbackHub_8wekyb3d8bbwe -h
+winget uninstall Microsoft.Getstarted_8wekyb3d8bbwe -h
 Pause
 Exit
