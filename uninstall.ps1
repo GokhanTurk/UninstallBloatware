@@ -11,7 +11,6 @@ winget uninstall Microsoft.SkypeApp_kzf8qxf38zg5c -h
 winget uninstall Microsoft.XboxApp_8wekyb3d8bbwe -h
 winget uninstall Microsoft.MicrosoftSolitaireCollection_8wekyb3d8bbwe -h
 winget uninstall Microsoft.MixedReality.Portal_8wekyb3d8bbwe -h
-winget uninstall Microsoft.SkypeApp_kzf8qxf38zg5c -h
 winget uninstall SpotifyAB.SpotifyMusic_zpdnekdrzrea0 -h
 winget uninstall Microsoft.XboxGamingOverlay_8wekyb3d8bbwe -h
 winget uninstall Microsoft.YourPhone_8wekyb3d8bbwe -h
