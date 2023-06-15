@@ -24,8 +24,5 @@ winget uninstall Microsoft.Wallet_8wekyb3d8bbwe -h
 winget uninstall Microsoft.Office.OneNote_8wekyb3d8bbwe -h
 winget uninstall Microsoft.WindowsFeedbackHub_8wekyb3d8bbwe -h
 winget uninstall Microsoft.MicrosoftOfficeHub_8wekyb3d8bbwe -h
-winget uninstall Microsoft.XboxGamingOverlay_8wekyb3d8bbwe -h
-winget uninstall Microsoft.XboxGameOverlay_8wekyb3d8bbwe -h
-winget uninstall Microsoft.Xbox.TCUI_8wekyb3d8bbwe -h
 Pause
 Exit
