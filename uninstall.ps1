@@ -6,7 +6,7 @@ Exit
 if (!(Get-Command winget -ErrorAction SilentlyContinue)) {
 irm "https://raw.githubusercontent.com/GokhanTurk/FormatSonrasi.bat/main/SilentWinget.ps1" | iex
 }
-winget install rarlab.winrar -h --accept-source-agreements --accept-package-agreements
+winget install Microsoft.PowerToys -h --accept-source-agreements --accept-package-agreements
 winget uninstall Microsoft.SkypeApp_kzf8qxf38zg5c -h
 winget uninstall Microsoft.XboxApp_8wekyb3d8bbwe -h
 winget uninstall Microsoft.MicrosoftSolitaireCollection_8wekyb3d8bbwe -h
@@ -14,6 +14,7 @@ winget uninstall Microsoft.MixedReality.Portal_8wekyb3d8bbwe -h
 winget uninstall SpotifyAB.SpotifyMusic_zpdnekdrzrea0 -h
 winget uninstall Microsoft.YourPhone_8wekyb3d8bbwe -h
 winget uninstall Microsoft.549981C3F5F10_8wekyb3d8bbwe -h
+winget uninstall Microsoft.BingNews_8wekyb3d8bbwe -h
 winget uninstall Microsoft.BingFinance_8wekyb3d8bbwe -h
 winget uninstall Microsoft.BingSports_8wekyb3d8bbwe -h
 winget uninstall Microsoft.People_8wekyb3d8bbwe -h
@@ -24,8 +25,12 @@ winget uninstall Microsoft.Wallet_8wekyb3d8bbwe -h
 winget uninstall Microsoft.Office.OneNote_8wekyb3d8bbwe -h
 winget uninstall Microsoft.WindowsFeedbackHub_8wekyb3d8bbwe -h
 winget uninstall Microsoft.MicrosoftOfficeHub_8wekyb3d8bbwe -h
+winget uninstall Clipchamp.Clipchamp_yxz26nhyzhsrt -h
+winget uninstall Microsoft.Todos_8wekyb3d8bbwe -h
+winget uninstall Microsoft.WindowsMaps_8wekyb3d8bbwe -h
+winget uninstall icrosoftCorporationII.QuickAssist_8wekyb3d8bbwe -h
 winget uninstall Microsoft.XboxGamingOverlay_8wekyb3d8bbwe -h
 winget uninstall Microsoft.XboxGameOverlay_8wekyb3d8bbwe -h
 winget uninstall Microsoft.Xbox.TCUI_8wekyb3d8bbwe -h
+
 Pause
-Exit
