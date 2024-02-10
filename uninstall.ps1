@@ -28,7 +28,7 @@ winget uninstall Microsoft.MicrosoftOfficeHub_8wekyb3d8bbwe -h
 winget uninstall Clipchamp.Clipchamp_yxz26nhyzhsrt -h
 winget uninstall Microsoft.Todos_8wekyb3d8bbwe -h
 winget uninstall Microsoft.WindowsMaps_8wekyb3d8bbwe -h
-winget uninstall icrosoftCorporationII.QuickAssist_8wekyb3d8bbwe -h
+winget uninstall MicrosoftCorporationII.QuickAssist_8wekyb3d8bbwe -h
 winget uninstall Microsoft.XboxGamingOverlay_8wekyb3d8bbwe -h
 winget uninstall Microsoft.XboxGameOverlay_8wekyb3d8bbwe -h
 winget uninstall Microsoft.Xbox.TCUI_8wekyb3d8bbwe -h
