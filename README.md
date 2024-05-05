@@ -1,5 +1,5 @@
 # UninstallBloatware
-This script is uninstalls useless apps on Windows 10.
+This script is uninstalls useless apps on Windows 10 / 11.
 
 You can use this script with this command via PowerShell(Administrator):
 ```Powershell
