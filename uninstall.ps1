@@ -4,7 +4,8 @@ if (-NOT ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdent
     Exit
     }
     if (!(Get-Command winget -ErrorAction SilentlyContinue)) {
-    Invoke-RestMethod "https://raw.githubusercontent.com/GokhanTurk/FormatSonrasi.bat/main/SilentWinget.ps1" | Invoke-Expression
+    #Invoke-RestMethod "https://raw.githubusercontent.com/GokhanTurk/FormatSonrasi.bat/main/SilentWinget.ps1" | Invoke-Expression
+    Write-Warning "You must install Winget!"
     }
     winget install 7zip.7zip -h --accept-source-agreements --accept-package-agreements
     
@@ -49,6 +50,14 @@ if (-NOT ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdent
         "Microsoft.XboxGamingOverlay_8wekyb3d8bbwe",
         "Microsoft.XboxGameOverlay_8wekyb3d8bbwe",
         "Microsoft.Xbox.TCUI_8wekyb3d8bbwe"
+        "9P1J8S7CCWWT"
+        "9NCBCSZSJRSB"
+        "Microsoft.DevHome"
+        "9NBLGGH5R558"
+        "9NXQXXLFST89"
+        "MSIX\Microsoft.BingNews_4.55.62231.0_x64__8wekyb3d8bbwe"
+        "9NHT9RB2F4HD"
+        "MSIX\Microsoft.Microsoft3DViewer_7.2502.5012.0_x64__8wekyb3d8bbwe"
     )
     
     foreach ($app in $appsToUninstall) {
