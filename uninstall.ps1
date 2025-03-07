@@ -7,7 +7,7 @@ if (-NOT ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdent
     #Invoke-RestMethod "https://raw.githubusercontent.com/GokhanTurk/FormatSonrasi.bat/main/SilentWinget.ps1" | Invoke-Expression
     Write-Warning "You must install Winget!"
     }
-    winget install 7zip.7zip -h --accept-source-agreements --accept-package-agreements
+    #winget install 7zip.7zip -h --accept-source-agreements --accept-package-agreements
     
     $appsToUninstall = @(
         "Microsoft.SkypeApp_kzf8qxf38zg5c",
