@@ -4,9 +4,10 @@ Ping 127.0.0.1 | Out-Null
 Exit
 }
 if (!(Get-Command winget -ErrorAction SilentlyContinue)) {
-irm "https://raw.githubusercontent.com/GokhanTurk/FormatSonrasi.bat/main/SilentWinget.ps1" | iex
+#irm "https://raw.githubusercontent.com/GokhanTurk/FormatSonrasi.bat/main/SilentWinget.ps1" | iex
+Write-Warning "You must install Winget!"
 }
-winget install rarlab.winrar -h --accept-source-agreements --accept-package-agreements
+#winget install rarlab.winrar -h --accept-source-agreements --accept-package-agreements
 winget uninstall Microsoft.SkypeApp_kzf8qxf38zg5c -h
 winget uninstall Microsoft.XboxApp_8wekyb3d8bbwe -h
 winget uninstall Microsoft.MicrosoftSolitaireCollection_8wekyb3d8bbwe -h
@@ -24,5 +25,13 @@ winget uninstall Microsoft.Wallet_8wekyb3d8bbwe -h
 winget uninstall Microsoft.Office.OneNote_8wekyb3d8bbwe -h
 winget uninstall Microsoft.WindowsFeedbackHub_8wekyb3d8bbwe -h
 winget uninstall Microsoft.MicrosoftOfficeHub_8wekyb3d8bbwe -h
+winget uninstall "9P1J8S7CCWWT" -h
+winget uninstall "9NCBCSZSJRSB" -h
+winget uninstall "Microsoft.DevHome" -h
+winget uninstall "9NBLGGH5R558" -h
+winget uninstall "9NXQXXLFST89" -h
+winget uninstall "MSIX\Microsoft.BingNews_4.55.62231.0_x64__8wekyb3d8bbwe" -h
+winget uninstall "9NHT9RB2F4HD" -h
+winget uninstall "MSIX\Microsoft.Microsoft3DViewer_7.2502.5012.0_x64__8wekyb3d8bbwe" -h
 Pause
 Exit
