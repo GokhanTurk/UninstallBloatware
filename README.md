@@ -10,6 +10,6 @@ irm https://raw.githubusercontent.com/GokhanTurk/UninstallBloatware/main/uninsta
 Or shorter:
 ```Powershell
 
-irm tinyurl.com/uninstallps1 | iex
+irm gokhanturk.com/uninstall | iex
 
 ```
