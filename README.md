@@ -1,15 +1,66 @@
-# UninstallBloatware
-This script is uninstalls useless apps on Windows 10 / 11.
+# 🛠️ UninstallBloatware
 
-You can use this script with this command via PowerShell(Administrator):
-```Powershell
+[🇹🇷 Türkçe](#turkish) | [🇺🇸 English](#english) 
+
+---
+
+<a name="turkish"></a>
+## 🇹🇷 Türkçe
+
+Bu araç, Windows sistemindeki gereksiz uygulamaları kalıcı olarak kaldırmak için tasarlanmış bir PowerShell aracıdır. Hem mevcut kullanıcıyı hem de sistemin hazırlanan paketlerini (provisioned packages) hedefleyerek temiz bir ortam sağlar.
+
+### ✨ Öne Çıkan Özellikler
+* **Derinlemesine Temizlik:** Uygulamaları "Provisioned" listesinden silerek yeni kullanıcı profillerinde tekrar oluşmalarını engeller.
+* **Seçimli Silme:** Hangi uygulamaların kaldırılacağını seçebileceğiniz menü tabanlı bir arayüz sunar.
+* **Hızlı Kurulum:** Dosya indirmeden, doğrudan bulut üzerinden çalıştırılabilir.
+### 🚀 Kullanım
+
+Aşağıdaki komutu PowerShell (Yönetici) üzerinde çalıştırın:
+```PowerShell
 
 irm https://raw.githubusercontent.com/GokhanTurk/UninstallBloatware/main/uninstall.ps1 | iex
 
 ```
+
+Ya da daha kısaca:
+```PowerShell
+
+irm https://gokhanturk.com/uninstall | iex
+
+```
+
+📄 LİSANS
+
+Bu proje MIT Lisansı altında lisanslanmıştır.
+
+<a name="english"></a>
+## 🇺🇸 English
+
+A streamlined PowerShell utility designed to permanently remove pre-installed bloatware and telemetry from Windows systems. This tool targets both the current user and the system's provisioned packages to ensure a clean environment for existing and future accounts.
+
+### ✨ Key Features
+* **Deep Cleaning:** Removes apps from the "Provisioned" list, preventing them from reappearing on new user profiles.
+* **Interactive Selection:** Provides a menu-driven interface to choose exactly which applications to remove.
+* **Zero-Footprint:** Execute directly from the cloud without downloading local files.
+
+### 🚀 How to Use
+
+You can use this script with this command via PowerShell (Administrator):
+
+```PowerShell
+
+irm https://raw.githubusercontent.com/GokhanTurk/UninstallBloatware/main/uninstall.ps1 | iex
+
+```
+
 Or shorter:
-```Powershell
+
+```PowerShell
 
 irm gokhanturk.com/uninstall | iex
 
 ```
+
+📄 LICENCE
+
+This project is licensed under the MIT License.
