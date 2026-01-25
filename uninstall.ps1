@@ -64,10 +64,6 @@ function Get-AppDisplayNames {
         "Microsoft.MicrosoftStickyNotes*" = "Sticky Notes"
         "Microsoft.ScreenSketch*" = "Snipping Tool"
         "Microsoft.WindowsMediaPlayer*" = "Windows Media Player"
-        "Microsoft.MicrosoftEdgeDevToolsClient*" = "Edge DevTools Client"
-        "Microsoft.Windows.CloudExperienceHost*" = "Cloud Experience Host"
-        "Microsoft.Windows.NarratorQuickStart*" = "Narrator QuickStart"
-        "Microsoft.Windows.PeopleExperienceHost*" = "People Experience Host"
     }
     $AppList | Where-Object { $_ -and $_ -ne '' } | ForEach-Object {
         $found = $null
@@ -276,10 +272,6 @@ $appsToRemove_3 = @(
     "Microsoft.WindowsCamera_8wekyb3d8bbwe", # Camera
     "Microsoft.WindowsAlarms_8wekyb3d8bbwe", # Alarms & Clock
     "Microsoft.WindowsMediaPlayer*", # Windows Media Player
-    "Microsoft.MicrosoftEdgeDevToolsClient*", # Edge DevTools Client
-    "Microsoft.Windows.CloudExperienceHost*", # Cloud Experience Host
-    "Microsoft.Windows.NarratorQuickStart*", # Narrator QuickStart
-    "Microsoft.Windows.PeopleExperienceHost*", # People Experience Host
     "Microsoft.BingSearch*", # Bing Search
     "Microsoft.GamingApp*", # Xbox App (GamingApp)
     "Microsoft.PowerAutomateDesktop*", # Power Automate Desktop
