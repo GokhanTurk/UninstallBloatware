@@ -1,3 +1,8 @@
+param(
+    [ValidateSet('1','2','3')]
+    [string]$Selection
+)
+
 function Get-AppDisplayNames {
     param([string[]]$AppList)
     $nameMap = @{
@@ -85,6 +90,13 @@ $null = $null # --- Admin check and elevation ---
 if (-not ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)) {
     $script = $MyInvocation.MyCommand.Definition
     $myArgs = @('-NoProfile', '-ExecutionPolicy', 'Bypass', '-File', $script)
+    
+    # Eger parametre geldiyse ve script yerel bir dosya olarak calisiyorsa parametreyi ilet
+    if ($Selection) {
+        $myArgs += "-Selection"
+        $myArgs += $Selection
+    }
+
     # Check if PowerShell 7 (pwsh) exists first
     $cmd = Get-Command pwsh -ErrorAction SilentlyContinue
     if ($cmd) {
@@ -97,14 +109,20 @@ if (-not ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdent
 }
 
 # --- Get User Selection ---
-Write-Host "Please select an option:" -ForegroundColor DarkCyan
-Write-Host "1 - Standard" -ForegroundColor Cyan
-Write-Host "2 - Gokhan >_" -ForegroundColor Cyan
-Write-Host "3 - Full (All apps will be removed; only the Microsoft Store will remain)" -ForegroundColor Cyan
-Write-Host "Note: The list of apps to be removed will be displayed below based on your selection." -ForegroundColor DarkGray
-$option = Read-Host "Your selection (1/2/3)"
-if ($option -notin '1','2','3') {
+# Parametre kontrolü: Eğer parametre geldiyse sorma, gelmediyse sor.
+if ($Selection) {
+    Write-Host "Auto-selection active: Option $Selection" -ForegroundColor Green
+    $option = $Selection
+} else {
+    Write-Host "Please select an option:" -ForegroundColor DarkCyan
+    Write-Host "1 - Standard" -ForegroundColor Cyan
+    Write-Host "2 - Gokhan >_" -ForegroundColor Cyan
+    Write-Host "3 - Full (All apps will be removed; only the Microsoft Store will remain)" -ForegroundColor Cyan
+    Write-Host "Note: The list of apps to be removed will be displayed below based on your selection." -ForegroundColor DarkGray
+    $option = Read-Host "Your selection (1/2/3)"
+}
 
+if ($option -notin '1','2','3') {
     Write-Host "Invalid selection. Script is terminating." -ForegroundColor Red
     exit
 }
@@ -364,7 +382,15 @@ function Remove-AppXProvisionedPackages {
 }
 
 Write-Host "This script will attempt to remove the specified AppX packages for all existing users and prevent them from being installed for new users." -ForegroundColor Cyan
-$response = Read-Host "Do you want to continue? (y/n)"
+
+# Onay kısmı: Parametre geldiyse otomatik onayla
+if ($Selection) {
+    Write-Host "Auto-confirming due to parameter..." -ForegroundColor Green
+    $response = 'y'
+} else {
+    $response = Read-Host "Do you want to continue? (y/n)"
+}
+
 if ($response -ne 'y' -and $response -ne 'Y') {
     Write-Host "Operation cancelled. Exiting in 5s..." -ForegroundColor Red
     timeout /t 5 > $null
@@ -406,4 +432,7 @@ Remove-AppXProvisionedPackages -PackagePatterns $appsToRemove
 
 Write-Host "`n--- Script execution completed ---" -ForegroundColor Green
 
-Read-Host "Press any key to exit..."
+# Parametreyle çalıştırıldıysa tuşa basmayı beklemeden çıkabilir, manuelde bekler.
+if (-not $Selection) {
+    Read-Host "Press any key to exit..."
+}

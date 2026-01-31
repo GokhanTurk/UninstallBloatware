@@ -7,11 +7,12 @@
 <a name="turkish"></a>
 ## 🇹🇷 Türkçe
 
-Bu araç, Windows sistemindeki gereksiz uygulamaları kalıcı olarak kaldırmak için tasarlanmış bir PowerShell aracıdır. Hem mevcut kullanıcıyı hem de sistemin hazırlanan paketlerini (provisioned packages) hedefleyerek temiz bir ortam sağlar.
+Bu araç, Windows üzerindeki gereksiz uygulamaları (bloatware) hem mevcut kullanıcıdan hem de sistem imajından kalıcı olarak temizleyen bir PowerShell aracıdır. Provisioned paketleri hedefleyerek, temizlenen uygulamaların yeni oluşturulan kullanıcı profillerinde tekrar yüklenmesini engeller.
 
 ### ✨ Öne Çıkan Özellikler
 * **Derinlemesine Temizlik:** Uygulamaları "Provisioned" listesinden silerek yeni kullanıcı profillerinde tekrar oluşmalarını engeller.
-* **Seçimli Silme:** Hangi uygulamaların kaldırılacağını seçebileceğiniz menü tabanlı bir arayüz sunar.
+* **Seçenekler:** Genel kullanım için **Standart** mod, kişisel yapılandırmam olan **Gokhan >_** modu ve özellikle sanal makineler için ideal olan (Terminal, Store, Notepad ve Edge harici her şeyi kaldıran) **Full** mod seçeneklerini sunar..
+* **Otomasyon Uyumu:** * **Otomasyon Uyumu:** `-Selection` parametresi (örn: `-Selection 1`) sayesinde katılımsız (unattended) kurulumlarda onay beklemeden çalışır.
 * **Hızlı Kurulum:** Dosya indirmeden, doğrudan bulut üzerinden çalıştırılabilir.
 ### 🚀 Kullanım
 
@@ -40,7 +41,8 @@ A streamlined PowerShell utility designed to permanently remove pre-installed bl
 
 ### ✨ Key Features
 * **Deep Cleaning:** Removes apps from the "Provisioned" list, preventing them from reappearing on new user profiles.
-* **Interactive Selection:** Provides a menu-driven interface to choose exactly which applications to remove.
+* **Interactive Selection:** Offers a **Standard** mode for general usage, a **Gokhan >_** mode tailored to my personal preferences, and a **Full** mode ideal for Virtual Machines that removes everything except Terminal, Store, Notepad, and Edge.
+* **Automation Ready:** Supports the `-Selection` parameter (e.g., `-Selection 1`) for unattended executions without user interaction.
 * **Zero-Footprint:** Execute directly from the cloud without downloading local files.
 
 ### 🚀 How to Use
