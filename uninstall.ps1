@@ -85,37 +85,33 @@ function Get-AppDisplayNames {
     }
 }
 
-$null = $null # --- Admin check and elevation ---
+# --- Admin check (Simplified) ---
+# We do not attempt to self-elevate because it fails in IEX (web) scenarios.
+# Instead, we simply warn the user and exit.
 if (-not ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)) {
-    $script = $MyInvocation.MyCommand.Definition
-    $myArgs = @('-NoProfile', '-ExecutionPolicy', 'Bypass', '-File', $script)
-    
-    # If a parameter is provided and the script is running as a local file, pass the parameter
-    if ($Selection) {
-        $myArgs += "-Selection"
-        $myArgs += $Selection
-    }
-
-    # Check if PowerShell 7 (pwsh) exists first
-    $cmd = Get-Command pwsh -ErrorAction SilentlyContinue
-    if ($cmd) {
-        $pwshPath = $cmd.Source
-        Start-Process -FilePath $pwshPath -ArgumentList $myArgs -Verb RunAs
-    } else {
-        Start-Process -FilePath "powershell.exe" -ArgumentList $myArgs -Verb RunAs
-    }
+    Write-Host "`n=======================================================" -ForegroundColor Red
+    Write-Host " ERROR: Administrator privileges are required!" -ForegroundColor Red
+    Write-Host "=======================================================" -ForegroundColor Red
+    Write-Host " This script removes system apps and needs Admin rights." -ForegroundColor Yellow
+    Write-Host " Please close this window, right-click PowerShell," -ForegroundColor Yellow
+    Write-Host " and select 'Run as Administrator'." -ForegroundColor Yellow
+    Write-Host "=======================================================" -ForegroundColor Red
+    Write-Host ""
+    Read-Host "Press Enter to exit..."
     exit
 }
 
 # --- Get User Selection ---
+$option = $null # CRITICAL FIX: Clear variable to prevent session leakage
+
 # Parameter check: If parameter is provided and valid, skip the prompt.
-if ($Selection) {
+if (-not [string]::IsNullOrWhiteSpace($Selection)) {
     if ($Selection -in '1','2','3') {
         Write-Host "Auto-selection active: Option $Selection" -ForegroundColor Green
         $option = $Selection
     } else {
         Write-Warning "Invalid parameter '$Selection'. Switching to interactive mode."
-        $Selection = $null # Geçersizse manuel moda düş
+        $Selection = $null # Reset selection to force manual mode
     }
 }
 
@@ -390,8 +386,8 @@ function Remove-AppXProvisionedPackages {
 
 Write-Host "This script will attempt to remove the specified AppX packages for all existing users and prevent them from being installed for new users." -ForegroundColor Cyan
 
-# Onay kısmı: Parametre geldiyse otomatik onayla
-if ($Selection) {
+# Confirmation: Auto-confirm only if a valid selection parameter was passed
+if (-not [string]::IsNullOrWhiteSpace($Selection) -and $Selection -eq $option) {
     Write-Host "Auto-confirming due to parameter..." -ForegroundColor Green
     $response = 'y'
 } else {
@@ -440,6 +436,6 @@ Remove-AppXProvisionedPackages -PackagePatterns $appsToRemove
 Write-Host "`n--- Script execution completed ---" -ForegroundColor Green
 
 # If run with parameter, exit without waiting for key press; otherwise wait.
-if (-not $Selection) {
+if ([string]::IsNullOrWhiteSpace($Selection)) {
     Read-Host "Press any key to exit..."
 }
