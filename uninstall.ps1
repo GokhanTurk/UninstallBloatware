@@ -1,5 +1,4 @@
 param(
-    [ValidateSet('1','2','3')]
     [string]$Selection
 )
 
@@ -91,7 +90,7 @@ if (-not ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdent
     $script = $MyInvocation.MyCommand.Definition
     $myArgs = @('-NoProfile', '-ExecutionPolicy', 'Bypass', '-File', $script)
     
-    # Eger parametre geldiyse ve script yerel bir dosya olarak calisiyorsa parametreyi ilet
+    # If a parameter is provided and the script is running as a local file, pass the parameter
     if ($Selection) {
         $myArgs += "-Selection"
         $myArgs += $Selection
@@ -109,11 +108,19 @@ if (-not ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdent
 }
 
 # --- Get User Selection ---
-# Parametre kontrolü: Eğer parametre geldiyse sorma, gelmediyse sor.
+# Parameter check: If parameter is provided and valid, skip the prompt.
 if ($Selection) {
-    Write-Host "Auto-selection active: Option $Selection" -ForegroundColor Green
-    $option = $Selection
-} else {
+    if ($Selection -in '1','2','3') {
+        Write-Host "Auto-selection active: Option $Selection" -ForegroundColor Green
+        $option = $Selection
+    } else {
+        Write-Warning "Invalid parameter '$Selection'. Switching to interactive mode."
+        $Selection = $null # Geçersizse manuel moda düş
+    }
+}
+
+# If option is not set (either no parameter or invalid parameter), ask manually
+if (-not $option) {
     Write-Host "Please select an option:" -ForegroundColor DarkCyan
     Write-Host "1 - Standard" -ForegroundColor Cyan
     Write-Host "2 - Gokhan >_" -ForegroundColor Cyan
@@ -432,7 +439,7 @@ Remove-AppXProvisionedPackages -PackagePatterns $appsToRemove
 
 Write-Host "`n--- Script execution completed ---" -ForegroundColor Green
 
-# Parametreyle çalıştırıldıysa tuşa basmayı beklemeden çıkabilir, manuelde bekler.
+# If run with parameter, exit without waiting for key press; otherwise wait.
 if (-not $Selection) {
     Read-Host "Press any key to exit..."
 }
